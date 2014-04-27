@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DIRNAME=$(cd `dirname $0` && pwd)
+USERNAME=$(<~/.meteor/swissknife.me.username)
+PASSWORD=$(<~/.meteor/swissknife.me.password)
+HOST="54.85.95.182"
+PORT="27017"
+DB="swissknife_me"
+OUT_DIR="/tmp"
+
+mongo -u $USERNAME -p $PASSWORD $HOST:$PORT/$DB

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# MODULUS_TOKEN=be8814df-3815-441f-8722-f54e59c83241 modulus project logs --project-name=swissknife
+
+SERVO=${1:-1}
+MODULUS_TOKEN=be8814df-3815-441f-8722-f54e59c83241 /usr/bin/expect <<EOD
+set timeout 60
+spawn modulus project logs --project-name=swissknife
+match_max 1000000
+expect "servo "
+send "${SERVO}\n"
+expect default
+EOD

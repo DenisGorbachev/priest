@@ -1,0 +1,154 @@
+#!/usr/bin/php
+<?php
+
+$aspects = array('Workability', 'Usability', 'Performance');
+$displayFunctions = array('Show', 'Search', 'Report');
+$mutationFunctions = array('Create', 'Update', 'Delete');
+$sideEffectFunctions = array('Respond');
+//$specialFunctions = array('Act');
+$directions = array('Process', 'Undo');
+$processes = array('Action', 'Validation', 'Security', 'Concurrency', 'Logging', 'Notification', 'Translation');
+$multiplications = array('Zero', 'One', 'Infinity');
+$entities = array('Object');
+
+if (empty($argv[1])) {
+    echo "Usage: ${argv[0]} object-classname\n";
+    exit(1);
+}
+$object = $argv[1];
+switch ($object) {
+    case 'Task':
+        $specialFunctions = array('Mark As Complete');
+        $entities = array_merge($entities, array('Image', 'Text', 'Author', 'Assignee', 'Watchers (1+)', 'Deadline', 'Alarm', 'Priority', 'Is Done'));
+        function validate($function, $direction, $process, $multiplication, $entity) {
+            global $mutationFunctions, $sideEffectFunctions, $sideEffectFunctions;
+            if ($entity == 'Is Done') {
+                if (in_array($function, $mutationFunctions)) {
+                    return false;
+                }
+            }
+            if ($function == 'Mark As Complete') {
+                if (!in_array($entity, array('Object'))) {
+                    return false;
+                }
+                if (in_array($multiplication, array('Zero', 'Infinity'))) {
+                    return false;
+                }
+                if (in_array($process, array('Validation'))) {
+                    return false;
+                }
+            }
+            if (in_array($function, $mutationFunctions) && $multiplication == 'Infinity') {
+                return false;
+            }
+            if (in_array($function, array('Import', 'Report'))) {
+                return false;
+            }
+            if (in_array($function, array('Search')) && !in_array($entity, array('Object'))) {
+                return false;
+            }
+            if (in_array($function, $sideEffectFunctions) && in_array($multiplication, array('Zero'))) {
+                return false;
+            }
+            if (in_array($process, array('Concurrency'))) {
+                return false;
+            }
+            if (in_array($process, array('Translation', 'Logging'))) {
+                return false;
+            }
+            return true;
+        }
+        break;
+    case 'Note':
+        $specialFunctions = array();
+        $entities = array_merge($entities, array('Text', 'Author', 'Task'));
+        function validate($function, $direction, $process, $multiplication, $entity) {
+            global $mutationFunctions, $sideEffectFunctions, $sideEffectFunctions;
+//            if ($entity == 'Is Done') {
+//                if (in_array($function, $mutationFunctions)) {
+//                    return false;
+//                }
+//            }
+            if (in_array($function, $mutationFunctions) && $multiplication == 'Infinity') {
+                return false;
+            }
+//            if (in_array($function, array('Import', 'Report'))) {
+//                return false;
+//            }
+//            if (in_array($function, array('Search')) && !in_array($entity, array('Object'))) {
+//                return false;
+//            }
+//            if (in_array($function, $sideEffectFunctions) && in_array($multiplication, array('Zero'))) {
+//                return false;
+//            }
+            if (in_array($direction, array('Undo'))) {
+                return false;
+            }
+            if (in_array($process, array('Notification', 'Concurrency', 'Translation', 'Logging'))) {
+                return false;
+            }
+            if (in_array($process, array('Security')) && in_array($multiplication, array('Zero'))) {
+                return false;
+            }
+            return true;
+        }
+        break;
+}
+$functions = array_merge($mutationFunctions, $displayFunctions, $sideEffectFunctions, $specialFunctions);
+
+echo 'Type,Notes,Verdict';
+foreach ($aspects as $aspect) {
+    echo ','.$aspect;
+}
+echo "\n";
+
+
+    foreach ($functions as $function) {
+        foreach ($directions as $direction) {
+            $directionSkip = false;
+            if (in_array($direction, array('Undo'))) {
+                    if (in_array($function, $displayFunctions)) {
+                        $directionSkip = true;
+                    }
+                    if (in_array($function, $sideEffectFunctions)) {
+                        $directionSkip = true;
+                    }
+            }
+            foreach ($processes as $process) {
+                $processSkip = false;
+                if (in_array($process, array('Validation', 'Logging'))) {
+                        if (in_array($function, $displayFunctions)) {
+                            $processSkip = true;
+                        }
+                }
+                foreach ($multiplications as $multiplication) {
+                    $multiplicationSkip = false;
+                    if (in_array($multiplication, array('Zero'))) {
+                            if (in_array($function, $mutationFunctions)) {
+                                $multiplicationSkip = true;
+                            }
+                    }
+                    if (in_array($multiplication, array('Infinity'))) {
+                            if (in_array($process, array('Security'))) {
+                                $multiplicationSkip = true;
+                            }
+                    }
+                    foreach ($entities as $i => $entity) {
+                        $entitySkip = false;
+//                        if ($entity == 'Object') {
+//                            if ($multiplication == 'Zero' && $process == 'Show') {
+//                                $entitySkip = true;
+//                            }
+//                        }
+                        if (!validate($function, $direction, $process, $multiplication, $entity)) {
+                            $entitySkip = true;
+                        }
+                        $verboseEntity = $object.($entity == 'Object'? '' : ' '.$entity);
+                        $verboseSkip = ($directionSkip || $processSkip || $multiplicationSkip || $entitySkip)? 'Skip' : '';
+                        echo "$function $direction $process for $multiplication $verboseEntity,,$verboseSkip,,,,\n";
+                    }
+                }
+            }
+        }
+//    }
+}
