@@ -1,0 +1,3 @@
+UI.registerHelper("share", ->
+  share
+)

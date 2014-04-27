@@ -6,3 +6,7 @@ Router.configure
 Router.map ->
   @route "index",
     path: "/"
+  @route "tool",
+    path: "/:category:/:slug"
+    action: ->
+      @render(@params.slug)

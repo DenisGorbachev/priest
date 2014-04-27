@@ -1,5 +1,8 @@
 Template.layout.helpers
-#  helper: ->
+  categoryTools: (isActive) ->
+    _.filter(share.tools, (tool) => tool.categorySlug is @slug and tool.isActive is isActive)
+  toolUrl: ->
+    "/" + @categorySlug + "/" + @slug
 
 Template.layout.rendered = ->
 
