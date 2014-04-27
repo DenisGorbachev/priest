@@ -1,4 +1,4 @@
-swissknife
+SwissKnife
 ==========
 
-Free online tools for programmers
+http://swissknife.me/ — Free online tools for programmers.
