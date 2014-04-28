@@ -3,4 +3,5 @@ share.Tools.before.insert (userId, tool) ->
     _.defaults(tool,
       name: tool.from + " to " + tool.to
       slug: tool.from.toLowerCase() + "-to-" + tool.to.toLowerCase()
+      template: tool.from.toLowerCase() + "2" + tool.to.toLowerCase()
     )

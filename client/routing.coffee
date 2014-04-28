@@ -13,3 +13,5 @@ Router.map ->
       {
         tool: share.Tools.findOne({slug: @params.slug})
       }
+    action: ->
+      @render(@data().tool.template)

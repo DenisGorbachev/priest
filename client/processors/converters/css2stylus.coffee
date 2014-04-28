@@ -1,1 +1,0 @@
-class share.CSSToStylusConverter extends share.CSSConverter

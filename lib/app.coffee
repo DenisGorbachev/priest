@@ -1,5 +1,10 @@
 share = share or {}
 
+#share.combine = (funcs...) ->
+#  (args...) =>
+#    for func in funcs
+#      func.apply(@, args)
+
 share.isDebug = Meteor.settings.public.isDebug
 
 object = if typeof(window) != "undefined" then window else GLOBAL
