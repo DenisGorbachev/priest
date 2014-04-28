@@ -4,7 +4,7 @@
     "secret": ""
   },
   "google": {
-    "secret": "zSsBIxh6xBUAndR_s3ASjf2Z"
+    "secret": ""
   },
   "apm": {
     "appId": "",
@@ -17,7 +17,7 @@
       "appId": ""
     },
     "google": {
-      "clientId": "805753112533-its1rbvobovaqie6rv4q1u7jpc7d500d.apps.googleusercontent.com"
+      "clientId": ""
     },
     "googleAnalytics": {
       "property": "",
