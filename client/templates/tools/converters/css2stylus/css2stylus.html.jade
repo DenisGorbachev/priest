@@ -11,3 +11,13 @@ template(name="css2stylus")
       .col-lg-6.output
         h2 #{tool.to}
         textarea
+        form.options.form-inline
+          .checkbox
+            label
+              input(type="checkbox" name="doPrefix" checked)
+              | &nbsp;Keep vendor prefixes
+          | &nbsp;&nbsp;
+          .checkbox
+            label
+              input(type="checkbox" name="cssSyntax")
+              | &nbsp;Use CSS syntax

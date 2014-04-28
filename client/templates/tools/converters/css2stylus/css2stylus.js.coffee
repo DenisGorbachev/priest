@@ -13,6 +13,9 @@ Template.css2stylus.events
   "paste .input textarea": encapsulate (event, template) ->
     share.converter.convert(template)
     share.converter.select(template)
+  "change .options input[type='checkbox']": encapsulate (event, template) ->
+    share.converter.convert(template)
+    share.converter.select(template)
   "click .load-sample": encapsulate (event, template) ->
     share.converter.loadSample(template)
     share.converter.convert(template)
