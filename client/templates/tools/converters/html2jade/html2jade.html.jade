@@ -2,9 +2,11 @@ template(name="html2jade")
   .html2jade.converter.container
     .row
       .col-lg-6.input
-        h2 #{tool.from}
+        h2
+          | #{tool.from}
+          | &nbsp;
+          a.load-sample(href="#") Load sample
         textarea
-        button.load-sample Load sample
         div
           iframe
           .entity-encoder
