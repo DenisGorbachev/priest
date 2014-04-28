@@ -1,0 +1,14 @@
+template(name="html2jade")
+  .html2jade.converter.container
+    .row
+      .col-lg-6.input
+        h2 #{tool.from}
+        textarea
+        button.load-sample Load sample
+        div
+          iframe
+          .entity-encoder
+      .col-lg-6.output
+        h2 #{tool.to}
+        textarea
+        form.options.form-inline

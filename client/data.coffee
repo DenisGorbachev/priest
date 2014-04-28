@@ -28,10 +28,11 @@ tools = [
     isActive: true
   }
   {
-    name: "HTML to Jade"
-    slug: "html-to-jade"
+    from: "HTML"
+    to: "Jade"
     categoryId: categorySlug2Id["convert"]
-    isActive: false
+    type: "converter"
+    isActive: true
   }
   {
     name: "JavaScript to CoffeeScript"
