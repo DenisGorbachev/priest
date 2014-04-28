@@ -1,109 +1,128 @@
-share.tools = [
-# testers
+categories = [
   {
-    name: "Regex"
-    slug: "regex"
-    categorySlug: "testers"
+    name: "Converters"
+    slug: "convert"
+  }
+  {
+    name: "Beautifiers"
+    slug: "beautify"
+  }
+]
+categorySlug2Id = []
+
+for category in categories
+  categorySlug2Id[category.slug] = share.Categories.insert(category)
+
+tools = [
+  {
+    name: "CSS to LESS"
+    slug: "css-to-less"
+    categoryId: categorySlug2Id["convert"]
     isActive: false
   }
   {
-    name: "Xpath"
-    slug: "xpath"
-    categorySlug: "testers"
+    name: "CSS to Stylus"
+    slug: "css-to-stylus"
+    categoryId: categorySlug2Id["convert"]
     isActive: false
   }
   {
-    name: "SQL"
-    slug: "sql"
-    categorySlug: "testers"
-    isActive: false
-  }
-# converters
-  {
-    name: "CSS"
-    slug: "css"
-    categorySlug: "converters"
+    name: "HTML to Jade"
+    slug: "html-to-jade"
+    categoryId: categorySlug2Id["convert"]
     isActive: false
   }
   {
-    name: "HTML"
-    slug: "html"
-    categorySlug: "converters"
+    name: "JavaScript to CoffeeScript"
+    slug: "javascript-to-coffeescript"
+    categoryId: categorySlug2Id["convert"]
     isActive: false
   }
   {
-    name: "JavaScript"
-    slug: "javascript"
-    categorySlug: "converters"
+    name: "Spacebars to Jade"
+    slug: "spacebars-to-jade"
+    categoryId: categorySlug2Id["convert"]
     isActive: false
   }
-# beautifiers
   {
     name: "CoffeeScript"
     slug: "coffeescript"
-    categorySlug: "beautifiers"
+    categoryId: categorySlug2Id["beautify"]
     isActive: false
   }
   {
     name: "CSS"
     slug: "css"
-    categorySlug: "beautifiers"
+    categoryId: categorySlug2Id["beautify"]
     isActive: false
   }
   {
     name: "HTML"
     slug: "html"
-    categorySlug: "beautifiers"
+    categoryId: categorySlug2Id["beautify"]
     isActive: false
   }
   {
     name: "Handlebars"
     slug: "handlebars"
-    categorySlug: "beautifiers"
+    categoryId: categorySlug2Id["beautify"]
     isActive: false
   }
   {
     name: "Jade"
     slug: "jade"
-    categorySlug: "beautifiers"
+    categoryId: categorySlug2Id["beautify"]
     isActive: false
   }
   {
     name: "JavaScript"
     slug: "javascript"
-    categorySlug: "beautifiers"
-    isActive: false
-  }
-# pickers
-  {
-    name: "Character"
-    slug: "character"
-    categorySlug: "pickers"
-    isActive: true
-  }
-  {
-    name: "Color"
-    slug: "color"
-    categorySlug: "pickers"
+    categoryId: categorySlug2Id["beautify"]
     isActive: false
   }
 ]
 
-share.categories = [
-  {
-    name: "Testers"
-    slug: "testers"
-  }
-  {
-    name: "Converters"
-    slug: "converters"
-  }
-  {
-    name: "Beautifiers"
-    slug: "beautifiers"
-  }
-  {
-    name: "Pickers"
-    slug: "pickers"
-  }
-]
+for tool in tools
+  share.Tools.insert(tool)
+
+#  {
+#    name: "Testers"
+#    slug: "testers"
+#  }
+#  {
+#    name: "Pickers"
+#    slug: "pickers"
+#  }
+
+# pickers
+#  {
+#    name: "Character"
+#    slug: "character"
+#    categorySlug: "pickers"
+#    isActive: true
+#  }
+#  {
+#    name: "Color"
+#    slug: "color"
+#    categorySlug: "pickers"
+#    isActive: false
+#  }
+# testers
+#  {
+#    name: "Regex"
+#    slug: "regex"
+#    categorySlug: "testers"
+#    isActive: false
+#  }
+#  {
+#    name: "Xpath"
+#    slug: "xpath"
+#    categorySlug: "testers"
+#    isActive: false
+#  }
+#  {
+#    name: "SQL"
+#    slug: "sql"
+#    categorySlug: "testers"
+#    isActive: false
+#  }

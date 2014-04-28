@@ -1,8 +1,11 @@
 Template.layout.helpers
+  categories: ->
+    share.Categories.find()
   categoryTools: (isActive) ->
-    _.filter(share.tools, (tool) => tool.categorySlug is @slug and tool.isActive is isActive)
+    cl @_id
+    share.Tools.find({categoryId: @_id, isActive: isActive})
   toolUrl: ->
-    "/" + @categorySlug + "/" + @slug
+    "/" + @category().slug + "/" + @slug
 
 Template.layout.rendered = ->
 

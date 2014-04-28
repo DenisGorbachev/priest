@@ -2,9 +2,7 @@ template(name="index")
   .container.index
     .row
      .col-lg-6
-        h1 Free online tools for programmers
-        p
-          | Can you imagine a single place for all programming needs? <strong>SwissKnife</strong> is exactly this: an upcoming collection of tools like testers, converters, beautifiers and pickers — absolutely <strong>free to use</strong>.
+        h1 Free online code <br><strong>converters and beautifiers</strong>
         .alert.alert-success
           strong Your data is safe.
           | &nbsp;
@@ -13,13 +11,24 @@ template(name="index")
           | Right now the only working tool is "<a href="/pickers/character">Character picker</a>". However, we're adding new ones rather fast. To make it even faster, you can send us a <a href="https://github.com/DenisGorbachev/swissknife">pull request on Github</a>.
         h3 Coming soon
         ul
-          li <strong>More tools</strong>
-          li Save & Load
-          li Offline support
-          li Mobile support (as HTML5 app)
-    //.col-lg-6
-      //   .well
-      //    h1 Table of contents
-      //    ol
-      //      li Testers
-      //        li: a.text-muted(href="#") Regex
+          li Batch convert & beautify
+          li Save & restore settings
+          li Offline app
+          li Mobile HTML5 app
+          li More languages
+          li: a(href="https://github.com/DenisGorbachev/swissknife/issues/new") Suggest new
+     .col-lg-6
+        .well
+          h1 Why?
+          p.
+            Programming languages evolve fast, but converters from old to new ones are stuck in Middle Ages.
+              Most of them are:
+          ol
+            li Insecure — require sending your data to server.
+            li Featureless — can't do batch conversion or process file uploads.
+            li Opinionated — restrict to vendor defaults.
+          p.
+            Yet, converters are the bridge between past and future.
+              Many companies and individuals are stuck using old languages because it isn't easy to convert existing codebase.
+              This must be fixed.
+          p: strong Better converters = broader adoption of new languages.

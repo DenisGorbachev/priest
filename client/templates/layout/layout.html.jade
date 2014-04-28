@@ -10,7 +10,7 @@ template(name="layout")
         a.navbar-brand(href="/") SwissKnife
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav
-          each share.categories
+          each categories
             li.dropdown
               a.dropdown-toggle(href="#", data-toggle="dropdown")
                 | #{name}
@@ -19,13 +19,11 @@ template(name="layout")
               ul.dropdown-menu
                 each categoryTools true
                   li: a(href=toolUrl) #{name}
-                if categoryTools true
-                  li.divider
                 each categoryTools false
                   li: a.text-muted(href=toolUrl) #{name}
                 li: a.text-muted(href="#") ... more soon ...
                 li.divider
-                li: a(href="mailto:Denis.D.Gorbachev@gmail.com?subject=Tester suggestion") Suggest new
+                li: a(href="https://github.com/DenisGorbachev/swissknife/issues/new") Suggest new
           li.github-button-wrapper
             iframe(src="http://ghbtns.com/github-btn.html?user=DenisGorbachev&repo=swissknife&type=fork&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="40")
         //ul.nav.navbar-nav.navbar-right
