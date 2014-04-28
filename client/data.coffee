@@ -4,8 +4,8 @@ categories = [
     slug: "convert"
   }
   {
-    name: "Beautifiers"
-    slug: "beautify"
+    name: "Formatters"
+    slug: "format"
   }
 ]
 categorySlug2Id = []
@@ -48,37 +48,37 @@ tools = [
   {
     name: "CoffeeScript"
     slug: "coffeescript"
-    categoryId: categorySlug2Id["beautify"]
+    categoryId: categorySlug2Id["format"]
     isActive: false
   }
   {
     name: "CSS"
     slug: "css"
-    categoryId: categorySlug2Id["beautify"]
+    categoryId: categorySlug2Id["format"]
     isActive: false
   }
   {
     name: "HTML"
     slug: "html"
-    categoryId: categorySlug2Id["beautify"]
+    categoryId: categorySlug2Id["format"]
     isActive: false
   }
   {
     name: "Handlebars"
     slug: "handlebars"
-    categoryId: categorySlug2Id["beautify"]
+    categoryId: categorySlug2Id["format"]
     isActive: false
   }
   {
     name: "Jade"
     slug: "jade"
-    categoryId: categorySlug2Id["beautify"]
+    categoryId: categorySlug2Id["format"]
     isActive: false
   }
   {
     name: "JavaScript"
     slug: "javascript"
-    categoryId: categorySlug2Id["beautify"]
+    categoryId: categorySlug2Id["format"]
     isActive: false
   }
 ]
