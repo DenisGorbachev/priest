@@ -6,7 +6,9 @@ template(name="css2stylus")
         textarea
         button.load-sample Load sample
       .col-lg-6.output
-        h2 #{tool.to}
+        h2
+          +social
+          | #{tool.to}
         textarea
         form.options.form-inline
           .checkbox

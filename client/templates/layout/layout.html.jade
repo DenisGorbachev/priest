@@ -42,9 +42,6 @@ template(name="layout")
                 li: a(href="https://github.com/DenisGorbachev/swissknife/issues/new") Suggest new
           li.github-button-wrapper
             iframe(src="http://ghbtns.com/github-btn.html?user=DenisGorbachev&repo=swissknife&type=fork&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="40")
-          if condition Router.current.route.name "isnt" "index"
-            li
-              +social
         //ul.nav.navbar-nav.navbar-right
         //    li
         //      a(href="#") About

@@ -9,6 +9,8 @@ template(name="html2jade")
           iframe
           .entity-encoder
       .col-lg-6.output
-        h2 #{tool.to}
+        h2
+          +social
+          | #{tool.to}
         textarea
         form.options.form-inline
