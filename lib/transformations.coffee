@@ -16,10 +16,21 @@ class share.Tool
   category: ->
     share.Categories.findOne({_id: @categoryId})
 
+class share.Converter extends share.Tool
+  converter: ->
+    @_converter or @_converter = new share[@from + "To" + @to + "Converter"]
+
+
 share.Transformations =
-  User: (user) ->
+  user: (user) ->
     if user instanceof share.User or not user then user else new share.User(user)
-  Category: (category) ->
+  category: (category) ->
     if category instanceof share.Category or not category then category else new share.Category(category)
-  Tool: (tool) ->
+  tool: (tool) ->
+    if tool.type
+      return share.Transformations[tool.type](tool)
     if tool instanceof share.Tool or not tool then tool else new share.Tool(tool)
+  converter: (converter) ->
+    if converter instanceof share.Converter or not converter then converter else new share.Converter(converter)
+
+

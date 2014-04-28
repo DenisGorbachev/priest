@@ -6,7 +6,10 @@ Router.configure
 Router.map ->
   @route "index",
     path: "/"
-  @route "tool",
-    path: "/:category:/:slug"
-    action: ->
-      @render(@params.slug)
+  @route "convert",
+    path: "/convert/:slug"
+    template: "convert"
+    data: ->
+      {
+        tool: share.Tools.findOne({slug: @params.slug})
+      }

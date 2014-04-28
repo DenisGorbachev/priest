@@ -5,9 +5,10 @@
 
 standard-app-packages
 iron-router
-bootstrap-3
 coffeescript
 stylus
 jade
 jquery
 underscore
+npm-packages
+collection-hooks

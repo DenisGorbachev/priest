@@ -4,7 +4,8 @@
     "basePackages": {
       "iron-router": {},
       "bootstrap-3": {},
-      "jade": {}
+      "jade": {},
+      "collection-hooks": {}
     },
     "packages": {
       "iron-router": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/mquandalle/meteor-jade.git",
         "tag": "v0.2.1",
         "commit": "969fc3dd0adbb15304e3e13c3e27260398d89503"
+      },
+      "collection-hooks": {
+        "git": "https://github.com/matb33/meteor-collection-hooks.git",
+        "tag": "v0.6.3",
+        "commit": "70f2598bf991cb36effd72aea2555cba96f88355"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

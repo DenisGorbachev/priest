@@ -21,10 +21,11 @@ tools = [
     isActive: false
   }
   {
-    name: "CSS to Stylus"
-    slug: "css-to-stylus"
+    from: "CSS"
+    to: "Stylus"
     categoryId: categorySlug2Id["convert"]
-    isActive: false
+    type: "converter"
+    isActive: true
   }
   {
     name: "HTML to Jade"
