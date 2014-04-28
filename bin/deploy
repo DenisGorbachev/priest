@@ -2,5 +2,5 @@
 
 DIRNAME=$(cd `dirname $0` && pwd)
 
-MODULUS_TOKEN=be8814df-3815-441f-8722-f54e59c83241 modulus project deploy --project-name=swissknife
+meteor deploy --settings settings/prod.json swissknife.meteor.com
 $DIRNAME/logs
