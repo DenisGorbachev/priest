@@ -13,7 +13,7 @@ class share.HTMLToJadeConverter
     </html>
     """
     sample.trim()
-  convert: (value, formOptions) ->
+  convert: (value, formOptions = []) ->
     share.html2jadeConvert(value)
 #    options =
 #      cssSyntax: false

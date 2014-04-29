@@ -1,7 +1,7 @@
 class share.CSSToStylusConverter extends share.CSSConverter
   executor: ->
     @_executor or @_executor = new Css2Stylus.Converter()
-  convert: (value, formOptions) ->
+  convert: (value, formOptions = []) ->
     executor = new Css2Stylus.Converter(value)
     options =
       cssSyntax: false

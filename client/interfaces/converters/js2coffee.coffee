@@ -56,7 +56,7 @@ class share.JavaScriptToCoffeeScriptConverter
       });
     """
     sample.trim()
-  convert: (value, formOptions) ->
+  convert: (value, formOptions = []) ->
     js2coffee.build(value,
       show_src_lineno: false
     )
