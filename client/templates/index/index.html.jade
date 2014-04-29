@@ -25,11 +25,11 @@ template(name="index")
           .input
             if isWebkit
               p
-                | Convert whole directory:
+                | Batch convert project directory:
                 | &nbsp;
                 input.files(type="file" name="dir" directory webkitdirectory mozdirectory)
             p
-              | Convert files:
+              | Convert one or many files:
               | &nbsp;
               input.files(type="file" name="files[]" multiple)
             .errors
