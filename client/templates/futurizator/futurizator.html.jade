@@ -1,0 +1,9 @@
+template(name="futurizator")
+  .css2stylus.converter.container
+    .row
+      .col-lg-12
+        h1 Convert whole project to CoffeeScript + Stylus + Jade
+
+        p: input.files(type="file" name="files[]" multiple directory webkitdirectory mozdirectory)
+        p *Requires Chrome for preserving directory structure
+        //.drop-area.well Drop your entire project directory here

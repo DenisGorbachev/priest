@@ -370,14 +370,20 @@ share.html2jadeConvert = (input, options) ->
     useTabs = true
   if options.donotencode
     doNotEncode = true
-  $iframe = $(".input iframe")
+  $iframe = $("<iframe style='display: none'></iframe>")
+  $(window.document.body).append($iframe)
   document = $iframe[0].contentWindow.document
   document.open()
   document.write(input)
   document.close()
   output = new StringOutput()
   converter = new Converter(options)
-  converter.document(document, output)
+  if input.indexOf("<html>") is -1
+    for child in document.body.children
+      converter.element(child, output)
+  else
+    converter.document(document, output)
+  $iframe.remove()
   output.final()
 
 #scope.convertHtml = (html, options, cb) ->

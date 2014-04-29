@@ -12,8 +12,9 @@ Template.html2jade.events
   "keyup .input textarea": encapsulate (event, template) ->
     share.converter.convert(template)
   "paste .input textarea": encapsulate (event, template) ->
-    share.converter.convert(template)
-    share.converter.select(template)
+    _.defer ->
+      share.converter.convert(template)
+      share.converter.select(template)
   "change .options input[type='checkbox']": encapsulate (event, template) ->
     share.converter.convert(template)
     share.converter.select(template)

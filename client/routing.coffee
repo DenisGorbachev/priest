@@ -15,3 +15,5 @@ Router.map ->
       }
     action: ->
       @render(@data().tool.template)
+  @route "futurizator",
+    path: "/futurizator-batch-convert"
