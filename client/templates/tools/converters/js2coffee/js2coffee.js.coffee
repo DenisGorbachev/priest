@@ -1,7 +1,7 @@
-Template.css2stylus.helpers
+Template.js2coffee.helpers
 #  helper: ->
 
-Template.css2stylus.rendered = ->
+Template.js2coffee.rendered = ->
   template = @
   if isDebug
     _.defer ->
@@ -9,7 +9,7 @@ Template.css2stylus.rendered = ->
       share.converter.convert(template)
   share.converter.selectInput(template)
 
-Template.css2stylus.events
+Template.js2coffee.events
   "keyup .input textarea": encapsulate (event, template) ->
     share.converter.convert(template)
   "paste .input textarea": encapsulate (event, template) ->

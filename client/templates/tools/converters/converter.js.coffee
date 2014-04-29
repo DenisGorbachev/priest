@@ -11,6 +11,9 @@ share.converter =
     $output.val(value)
   loadSample: (template) ->
     $(template.find(".input textarea")).val(template.data.tool.converter().getSample())
-  select: (template) ->
+  selectInput: (template) ->
+    _.defer ->
+      $(template.find(".input textarea")).select()
+  selectOutput: (template) ->
     _.defer ->
       $(template.find(".output textarea")).select()

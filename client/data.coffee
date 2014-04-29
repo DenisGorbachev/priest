@@ -35,10 +35,12 @@ tools = [
     isActive: true
   }
   {
-    name: "JavaScript to CoffeeScript"
-    slug: "javascript-to-coffeescript"
+    from: "JavaScript"
+    to: "CoffeeScript"
     categoryId: categorySlug2Id["convert"]
-    isActive: false
+    type: "converter"
+    template: "js2coffee"
+    isActive: true
   }
   {
     name: "Spacebars to Jade"

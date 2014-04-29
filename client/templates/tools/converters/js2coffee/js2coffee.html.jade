@@ -1,0 +1,15 @@
+template(name="js2coffee")
+  .js2coffee.converter.container
+    .row
+      .col-lg-6.input
+        h2
+          | #{tool.from}
+          | &nbsp;
+          a.load-sample(href="#") Load sample
+        textarea
+      .col-lg-6.output
+        h2
+          +social
+          | #{tool.to}
+        textarea
+        form.options.form-inline
