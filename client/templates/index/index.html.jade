@@ -39,10 +39,12 @@ template(name="index")
                   p #{.}
             textarea(placeholder="Convert code")
             p * Orthodox encoding of "UTF-8" assumed
-            .alert.alert-success
-              strong Your data is safe, my friend.
-              | &nbsp;
-              | Whatever you convert stays inside your browser.
+          .output
+            textarea
+          .alert.alert-success
+            strong Your data is safe, my friend.
+            | &nbsp;
+            | Whatever you convert stays inside your browser.
         h2 Rejoice with brethren
         +social
         h2 Strengthen your faith with upcoming features

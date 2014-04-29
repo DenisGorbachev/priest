@@ -5,6 +5,13 @@ Template.index.helpers
     Session.get("futurizator-errors")
 
 Template.index.rendered = ->
+  template = @
+#  if isDebug
+#    _.defer ->
+#      share.converter.loadSample(template)
+#      converter.convert(template)
+#      share.converter.showOutput(template)
+  share.converter.selectInput(template)
 
 Template.index.events
   "change .files": encapsulate (event, template) ->
@@ -59,6 +66,24 @@ Template.index.events
     event.stopPropagation()
     for f in event.originalEvent.dataTransfer.files
       cl f
+  "keyup .input textarea": encapsulate (event, template) ->
+    converter.convert(template)
+    share.converter.showOutput(template)
+  "paste .input textarea": encapsulate (event, template) ->
+    _.defer ->
+      converter.convert(template)
+      share.converter.showOutput(template)
+      share.converter.selectOutput(template)
+  "change .options input[type='checkbox']": encapsulate (event, template) ->
+    converter.convert(template)
+    share.converter.showOutput(template)
+    share.converter.selectOutput(template)
+  "click .load-sample": encapsulate (event, template) ->
+    share.converter.loadSample(template)
+    converter.convert(template)
+    share.converter.showOutput(template)
+    share.converter.selectOutput(template)
+
 
 ab2str = (buf) ->
   String.fromCharCode.apply null, new Uint8Array(buf)
@@ -75,3 +100,23 @@ str2ab = (str) ->
   buf
 
 Session.setDefault("futurizator-errors", [])
+
+converter = _.defaults(
+  convert: (template) ->
+    $input = $(template.find(".input textarea"))
+    $output = $(template.find(".output textarea"))
+    $options = $(template.find(".options"))
+    input = $input.val().trim()
+    output = ""
+    options = if $options.length then $options.serializeArray() else []
+    if input
+      for toolConverter in [new share.JavaScriptToCoffeeScriptConverter(), new share.CSSToStylusConverter(), new share.HTMLToJadeConverter()]
+        try
+          output = toolConverter.convert(input, options)
+        catch e
+          continue
+        if not output
+          continue
+        break
+    $output.val(output)
+)

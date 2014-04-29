@@ -14,6 +14,8 @@ share.converter =
   selectInput: (template) ->
     _.defer ->
       $(template.find(".input textarea")).select()
+  showOutput: (template) ->
+    $(template.find(".output")).show()
   selectOutput: (template) ->
     _.defer ->
       $(template.find(".output textarea")).select()
