@@ -15,34 +15,34 @@ head
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
 template(name="layout")
-  nav.navbar.navbar-default(role="navigation")
-    .container
-      .navbar-header
-        button.navbar-toggle(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
-          span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand(href="/") SwissKnife
-      #bs-example-navbar-collapse-1.collapse.navbar-collapse
-        ul.nav.navbar-nav
-          li: a(href="/futurizator-batch-convert") Futurizator
-          each categories
-            li.dropdown
-              a.dropdown-toggle(href="#", data-toggle="dropdown")
-                | #{name}
-                | &nbsp;
-                b.caret
-              ul.dropdown-menu
-                each categoryTools true
-                  li: a(href=toolUrl) #{name}
-                each categoryTools false
-                  li: a.text-muted(href="#") #{name}
-                li: a.text-muted(href="#") ~ more soon ~
-                li.divider
-                li: a(href="https://github.com/DenisGorbachev/swissknife/issues/new") Suggest new
-          li.github-button-wrapper
-            iframe(src="http://ghbtns.com/github-btn.html?user=DenisGorbachev&repo=swissknife&type=fork&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="40")
+  //nav.navbar.navbar-default(role="navigation")
+  //  .container
+  //    .navbar-header
+  //      button.navbar-toggle(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+  //        span.sr-only Toggle navigation
+  //        span.icon-bar
+  //        span.icon-bar
+  //        span.icon-bar
+  //      a.navbar-brand(href="/") Priest
+  //    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+  //      ul.nav.navbar-nav
+  //        li: a(href="/futurizator-batch-convert") Futurizator
+  //        each categories
+  //          li.dropdown
+  //            a.dropdown-toggle(href="#", data-toggle="dropdown")
+  //              | #{name}
+  //              | &nbsp;
+  //              b.caret
+  //            ul.dropdown-menu
+  //              each categoryTools true
+  //                li: a(href=toolUrl) #{name}
+  //              each categoryTools false
+  //                li: a.text-muted(href="#") #{name}
+  //              li: a.text-muted(href="#") ~ more soon ~
+  //              li.divider
+  //              li: a(href="https://github.com/DenisGorbachev/swissknife/issues/new") Suggest new
+  //        li.github-button-wrapper
+  //          iframe(src="http://ghbtns.com/github-btn.html?user=DenisGorbachev&repo=swissknife&type=fork&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="40")
         //ul.nav.navbar-nav.navbar-right
         //    li
         //      a(href="#") About

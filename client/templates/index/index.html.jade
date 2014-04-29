@@ -1,40 +1,60 @@
 template(name="index")
   .container.index
     .row
-      .col-lg-4
-        .well
-          h3 Converters
-          ul
-            li: a(href="/convert/css-to-stylus") CSS to Stylus
-            li: a(href="/convert/html-to-jade") HTML to Jade
-      .col-lg-8
-        h1 Free online <strong>converters and formatters</strong>
+      //.col-lg-4
+      //  .well
+      //    h3 Converters
+      //    ul
+      //      li: a(href="/convert/css-to-stylus") CSS to Stylus
+      //      li: a(href="/convert/html-to-jade") HTML to Jade
+      .col-lg-8.col-lg-offset-2
+        h1 <strong>Priest</strong>, free online <strong>converter and formatter</strong>
         p.
-          Programming languages <strong>evolve fast</strong>, but converters from old to new ones are stuck in <strong>Middle Ages</strong>.
-            Some of them are:
-        ol
-          li Insecure — require sending your data to server.
-          li Inflexible — restrict to vendor defaults.
-          li Immature — can't do batch conversion or process file uploads.
+          My friend, before we proceed — let me ask you three questions of utmost importance.
         p.
-          Yet, <strong>converters are the bridge</strong> between past and future.<br/>
-            Many programmers are stuck with old languages because it isn't easy to convert existing codebase.
-            This must be fixed.
-        p: strong Better converters = broader adoption of better languages.
-
-        .alert.alert-success
-          strong Your data is safe.
-          | &nbsp;
-          | Everything works in your browser.
+          Do you believe in <strong>CoffeeScript</strong>, Almighty and Supreme?
+        p.
+          Do you believe in <strong>Stylus</strong>, Heightened and Blissful?
+        p.
+          Do you believe in <strong>Jade</strong>, Immaculate and Pure?
+        p.
+          If your eyes widen, your breath quickens, your heart hastens upon hearing these names — advance bravely, for I am destined to be revealed before the open-minded.
+        p.
+          Behold the Universal Converter. It divinely translates any code into holy scripture.
+        .well.converter
+          .input
+            if isWebkit
+              p
+                | Convert whole directory:
+                | &nbsp;
+                input.files(type="file" name="dir" directory webkitdirectory mozdirectory)
+            p
+              | Convert files:
+              | &nbsp;
+              input.files(type="file" name="files[]" multiple)
+            .errors
+              each errors
+                .alert.alert-danger.fade.in
+                  button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                  p #{.}
+            textarea(placeholder="Convert code")
+            p * Orthodox encoding of "UTF-8" assumed
+            .alert.alert-success
+              strong Your data is safe, my friend.
+              | &nbsp;
+              | Whatever you convert stays inside your browser.
+        h2 Rejoice with brethren
         +social
-        p.
-          We'll be gradually adding new converters. To make it happen sooner, you can send us a <a href="https://github.com/DenisGorbachev/swissknife">pull request on Github</a>.
-        h2 Coming soon
+        h2 Strengthen your faith with upcoming features
         ul
-          li Magic converter with built-in language detection
-          li Autoconvert on browser page (for Github and other sites)
-          li Batch convert & format
-          li Save & restore settings
-          li Offline app
-          li Mobile HTML5 app
-          li: a(href="https://github.com/DenisGorbachev/swissknife/issues/new") Suggest new
+          li Autoconvert text in browser (for Github and other righteous sites)
+          li Save & restore unorthodox settings
+          li Offline app for times of weak divine connection
+          li Mobile HTML5 app for fruitful multiplication
+          li: a(href="https://github.com/DenisGorbachev/swissknife/issues/new") Humbly suggest new
+        p.
+          Enlightened sages can <a href="https://github.com/DenisGorbachev/swissknife">embody their wisdom</a> in Github pull requests.
+        hr
+        p.
+          Priest is an imaginary friend of unworthy <a href="https://twitter.com/DenGorbachev">Denis Gorbachev</a>. Blessed for ages are <a href="https://twitter.com/rstacruz">Rico Sta Cruz</a>, <a href="https://twitter.com/tdecs">Denis Ciccale</a> and <a href="https://twitter.com/donpark">Don Park</a> who provided foundational code.
+        //iframe(src="http://ghbtns.com/github-btn.html?user=DenisGorbachev&repo=swissknife&type=fork&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="40")
