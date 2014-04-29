@@ -13,22 +13,26 @@ Template.index.events
     zip = new JSZip()
     input = event.currentTarget
     save = _.after(input.files.length, ->
+      count = zip.file(/.*/).length + zip.folder(/.*/).length
+      if not count
+        errors.push("No files selected")
       Session.set("futurizator-errors", errors)
       $(input).replaceWith($(input).clone(true))
-      content = zip.generate(type: "blob")
-      saveAs content, "example.zip"
+      if count is 1
+        file = zip.file(/.*/)[0]
+        saveAs new Blob([file.asArrayBuffer()]), file.name
+      else if count
+        content = zip.generate(type: "blob")
+        saveAs content, "converted.zip"
     )
     JavaScriptToCoffeeScriptConverter = new share.JavaScriptToCoffeeScriptConverter()
     CSSToStylusConverter = new share.CSSToStylusConverter()
     HTMLToJadeConverter = new share.HTMLToJadeConverter()
     for file in event.currentTarget.files
-      if not file.type # directory
-        save()
-        continue
       reader = new FileReader()
       reader.onload = _.partial((file, e) ->
         result = e.target.result
-        path = file.webkitRelativePath
+        path = file.webkitRelativePath or file.name
         try
           switch true
             when !!path.match(/\.js$/i)
@@ -45,9 +49,10 @@ Template.index.events
         catch e
           errors.push(path + " :: " + e.toString())
         zip.file(path, result)
-        save()
       , file)
-      blob = reader.readAsArrayBuffer(file)
+      reader.onloadend = ->
+        save()
+      reader.readAsArrayBuffer(file)
   "dragover .drop-area": grab encapsulate (event, template) ->
   "drop .drop-area": grab encapsulate (event, template) ->
     event.preventDefault()
