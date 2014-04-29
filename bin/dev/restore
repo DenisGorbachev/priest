@@ -1,6 +1,6 @@
 #!/bin/bash
 
-METEOR_DOMAIN="dev.swissknife.me"
+METEOR_DOMAIN="dev.priest.me"
 
 if [[ "$METEOR_DOMAIN" == "" ]]
 then

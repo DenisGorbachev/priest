@@ -2,5 +2,5 @@
 
 DIRNAME=$(cd `dirname $0` && pwd)
 
-meteor deploy -D dev.swissknife.me --settings settings/dev.json
-meteor deploy dev.swissknife.me --settings settings/dev.json
+meteor deploy -D dev.priest.me --settings settings/dev.json
+meteor deploy dev.priest.me --settings settings/dev.json

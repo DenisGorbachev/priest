@@ -1,8 +1,8 @@
 #!/bin/bash
 
 DIRNAME=$(cd `dirname $0` && pwd)
-USERNAME=$(<~/.meteor/swissknife.me.username)
-PASSWORD=$(<~/.meteor/swissknife.me.password)
+USERNAME=$(<~/.meteor/priest.me.username)
+PASSWORD=$(<~/.meteor/priest.me.password)
 HOST="54.85.95.182"
 PORT="27017"
 DB="swissknife_me"
