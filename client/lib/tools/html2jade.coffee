@@ -1,6 +1,6 @@
 nspaces = 2
 useTabs = false
-doNotEncode = false
+doNotEncode = true
 
 # hack to bypass encoding
 Ent =
