@@ -2,7 +2,7 @@
 
 DIRNAME=$(cd `dirname $0` && pwd)
 
-tar -C /tmp -xzf ~/swissknife_me.tar.gz
+tar -C /tmp -xzf ~/priest_me.tar.gz
 if [[ $? == 0 ]] ; then
   $DIRNAME/mongorestore-dump
 fi

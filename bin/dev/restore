@@ -33,7 +33,7 @@ then
 	MONGO_PASSWORD="${BASH_REMATCH[2]}"
 	MONGO_DOMAIN="${BASH_REMATCH[3]}"
 	MONGO_DB="${BASH_REMATCH[4]}"
-	MONGO_OUT_DIR="/tmp/dump/swissknife_me"
+	MONGO_OUT_DIR="/tmp/dump/priest_me"
 
 	#e.g mongodump -u client -h skybreak.member0.mongolayer.com:27017 -d goto_meteor_com -p "guid-style-password"
 	echo "Running mongodump -u $MONGO_USER -h $MONGO_DOMAIN -d $MONGO_DB -p \"${MONGO_PASSWORD}\" -o $MONGO_OUT_DIR"

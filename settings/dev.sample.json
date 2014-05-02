@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://swissknife:3000",
+  "baseUrl": "http://priest:3000",
   "facebook": {
     "secret": ""
   },

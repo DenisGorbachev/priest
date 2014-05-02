@@ -5,7 +5,7 @@ USERNAME=$(<~/.meteor/priest.me.username)
 PASSWORD=$(<~/.meteor/priest.me.password)
 HOST="54.85.95.182"
 PORT="27017"
-DB="swissknife_me"
+DB="priest_me"
 OUT_DIR="/tmp"
 
 mongo -u $USERNAME -p $PASSWORD $HOST:$PORT/$DB

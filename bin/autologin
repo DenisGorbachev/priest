@@ -6,7 +6,7 @@ USERNAME=$(<~/.meteor/${METEOR_DOMAIN}.username)
 PASSWORD=$(<~/.meteor/${METEOR_DOMAIN}.password)
 HOST="54.85.95.182"
 PORT="27017"
-DB="swissknife_me"
+DB="priest_me"
 OUT_DIR="/tmp"
 
 EMAIL=$1
