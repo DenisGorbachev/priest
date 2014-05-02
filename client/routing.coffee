@@ -6,7 +6,7 @@ Router.configure
 Router.map ->
   @route "index",
     path: "/"
-    after: ->
+    onAfterAction: ->
       share.setPageTitle("Priest, free online converter and formatter", false)
   @route "convert",
     path: "/convert/:slug"
@@ -26,3 +26,6 @@ share.setPageTitle = (title, appendSiteName = true) ->
   if Meteor.settings.public.isDebug
     title = "(D) " + title
   document.title = title
+
+Router.onAfterAction ->
+  share.debouncedSendPageview()
