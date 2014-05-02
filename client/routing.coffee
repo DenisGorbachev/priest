@@ -6,6 +6,8 @@ Router.configure
 Router.map ->
   @route "index",
     path: "/"
+    after: ->
+      share.setPageTitle("Priest, free online converter and formatter", false)
   @route "convert",
     path: "/convert/:slug"
     template: "convert"
@@ -17,3 +19,10 @@ Router.map ->
       @render(@data().tool.template)
   @route "futurizator",
     path: "/futurizator-batch-convert"
+
+share.setPageTitle = (title, appendSiteName = true) ->
+  if appendSiteName
+    title += " - Priest"
+  if Meteor.settings.public.isDebug
+    title = "(D) " + title
+  document.title = title
