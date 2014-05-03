@@ -1,58 +1,30 @@
 template(name="index")
   .container.index
     .row
-      //.col-lg-4
-      //  .well
-      //    h3 Converters
-      //    ul
-      //      li: a(href="/convert/css-to-stylus") CSS to Stylus
-      //      li: a(href="/convert/html-to-jade") HTML to Jade
       .col-lg-8.col-lg-offset-2
-        h1 <strong>Priest</strong>, free online <strong>converter and formatter</strong>
+        h1 <strong>Quux</strong>, free online tools for programmers
         p.
-          Do you believe in <strong>CoffeeScript</strong>, Almighty and Supreme?
-        p.
-          Do you believe in <strong>Stylus</strong>, Heightened and Blissful?
-        p.
-          Do you believe in <strong>Jade</strong>, Immaculate and Pure?
-        p.
-          Behold the Universal Converter. It divinely translates all code into holy scripture.
-        .well.converter
-          .input
-            if isWebkit
-              p
-                | Batch convert project directory:
-                | &nbsp;
-                input.files(type="file" name="dir" directory webkitdirectory mozdirectory)
-            p
-              | Convert one or many files:
-              | &nbsp;
-              input.files(type="file" name="files[]" multiple)
-            .errors
-              each errors
-                .alert.alert-danger.fade.in
-                  button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
-                  p #{.}
-            textarea(placeholder="Convert code")
-            p * Orthodox encoding of "UTF-8" assumed
-          .output
-            textarea
-          .alert.alert-success
-            strong Your data is safe, my friend.
-            | &nbsp;
-            | Whatever you convert stays inside your browser.
-        h2 Spread the good news
-        +social
-        h2 Strengthen your faith with upcoming features
+          You've recently overheard a talk about "Quux zone", inhabited by some... controversial characters. Though not exactly outlaws, they do tricks that some CS professors equal to cheating. For example:
         ul
-          li Autoconvert text in browser (for Github and other righteous sites)
-          li Save & restore unorthodox settings
-          li Offline app for times of weak divine connection
-          li Mobile HTML5 app for fruitful multiplication
-          li: a(href="https://github.com/DenisGorbachev/priest/issues/new") Humbly suggest new
+          li
+            a(href="/convert") Convert JavaScript to CoffeeScript
+            | &nbsp;(or CSS to Stylus, or HTML to Jade)
+          li
+            a(href="/encrypt-and-decrypt") Encrypt and decrypt messages
+          li
+            a(href="/validate") Validate
+            | &nbsp;and&nbsp;
+            a(href="/beautify") beautify
+            | &nbsp;code
+          li
+            a(href="/validate") Find Unicode character by its shape
         p.
-          Enlightened sages can <a href="https://github.com/DenisGorbachev/priest">embody their wisdom</a> in Github pull requests.
-        hr
+          Of all quuxes, <strong>Priest</strong> is the most vocal one. Nobody knows about his past, though some say he employed ugly hacks in arcane languages to get his systems working. Even if it were true, Priest is another man now. He preaches the cleanest programming patterns, and even helps his followers to <a href="/convert">convert code</a> written in old languages to new ones.
         p.
-          Priest is an imaginary friend of unworthy <a href="https://twitter.com/DenGorbachev">Denis Gorbachev</a>. Blessed for ages are <a href="https://twitter.com/rstacruz">Rico Sta Cruz</a>, <a href="https://twitter.com/tdecs">Denis Ciccale</a> and <a href="https://twitter.com/donpark">Don Park</a> who provided foundational code.
-        //iframe(src="http://ghbtns.com/github-btn.html?user=DenisGorbachev&repo=priest&type=fork&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="40")
+          A direct contrast to upstanding Priest is an aged couple of <strong>Bob and Alice</strong>. They once worked in a place so loud they could only communicate via handwritten notes. After moving to Quux, they liked the surrounding quietness so much they continued the habit of writing instead of talking just to preserve the silence. However odd that habit may seem, it has led them to develop a skill to quickly encrypt or decrypt any message inside their heads — which they generously do even for strangers who ask politely.
+        p.
+          The quiet couple is admired by everyone except <strong>Judge</strong>. He had a wife once, but she often left trailing commas around the house, which troubled her idealistic and stern husband. After divorce, his only pleasure in life is to <a href="/validate">validate data structures</a> in JSON and XML, carefully sifting through entities and characters.
+        p.
+          There is another man in Quux who shares Judge's fondness for letters and symbols — <strong>Mr. Hao, the calligrapher</strong>. When he is not busy devising new characters and fonts, he entertains himself by helping people <a href="/lookup">lookup Unicode characters</a> by their shape.
+        p.
+          His hobby is adored by <a href="/beautify">Ms. Lane</a>, the most amiable inhabitant of Quux. Her beauty is

@@ -1,0 +1,58 @@
+template(name="convert")
+  .container.convert
+    .row
+      //.col-lg-4
+      //  .well
+      //    h3 Converters
+      //    ul
+      //      li: a(href="/convert/css-to-stylus") CSS to Stylus
+      //      li: a(href="/convert/html-to-jade") HTML to Jade
+      .col-lg-8.col-lg-offset-2
+        h1 <strong>Priest</strong>, free online <strong>converter and formatter</strong>
+        p.
+          Do you believe in <strong>CoffeeScript</strong>, Almighty and Supreme?
+        p.
+          Do you believe in <strong>Stylus</strong>, Heightened and Blissful?
+        p.
+          Do you believe in <strong>Jade</strong>, Immaculate and Pure?
+        p.
+          Behold the Universal Converter. It divinely translates all code into holy scripture.
+        .well.converter
+          .input
+            if isWebkit
+              p
+                | Batch convert project directory:
+                | &nbsp;
+                input.files(type="file" name="dir" directory webkitdirectory mozdirectory)
+            p
+              | Convert one or many files:
+              | &nbsp;
+              input.files(type="file" name="files[]" multiple)
+            .errors
+              each errors
+                .alert.alert-danger.fade.in
+                  button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                  p #{.}
+            textarea(placeholder="Convert code")
+            p * Orthodox encoding of "UTF-8" assumed
+          .output
+            textarea
+          .alert.alert-success
+            strong Your data is safe, my friend.
+            | &nbsp;
+            | Whatever you convert stays inside your browser.
+        h2 Spread the good news
+        +social
+        h2 Strengthen your faith with upcoming features
+        ul
+          li Autoconvert text in browser (for Github and other righteous sites)
+          li Save & restore unorthodox settings
+          li Offline app for times of weak divine connection
+          li Mobile HTML5 app for fruitful multiplication
+          li: a(href="https://github.com/DenisGorbachev/priest/issues/new") Humbly suggest new
+        p.
+          Enlightened sages can <a href="https://github.com/DenisGorbachev/priest">embody their wisdom</a> in Github pull requests.
+        hr
+        p.
+          Priest is an imaginary friend of unworthy <a href="https://twitter.com/DenGorbachev">Denis Gorbachev</a>. Blessed for ages are <a href="https://twitter.com/rstacruz">Rico Sta Cruz</a>, <a href="https://twitter.com/tdecs">Denis Ciccale</a> and <a href="https://twitter.com/donpark">Don Park</a> who provided foundational code.
+        //iframe(src="http://ghbtns.com/github-btn.html?user=DenisGorbachev&repo=priest&type=fork&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="40")

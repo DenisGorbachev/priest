@@ -7,8 +7,10 @@ Router.map ->
   @route "index",
     path: "/"
     onAfterAction: ->
-      share.setPageTitle("Priest, free online converter and formatter", false)
+      share.setPageTitle("Quux, free online tools for programmers", false)
   @route "convert",
+    path: "/convert"
+  @route "convertWithTool",
     path: "/convert/:slug"
     template: "convert"
     data: ->
@@ -17,8 +19,6 @@ Router.map ->
       }
     action: ->
       @render(@data().tool.template)
-  @route "futurizator",
-    path: "/futurizator-batch-convert"
 
 share.setPageTitle = (title, appendSiteName = true) ->
   if appendSiteName
