@@ -20,7 +20,7 @@ head
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 template(name="layout")
-  nav.navbar.navbar-default(role="navigation")
+  nav.navbar.navbar-default.navbar-static-top(role="navigation")
     .container
       .navbar-header
         button.navbar-toggle(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
@@ -28,13 +28,13 @@ template(name="layout")
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand(href="/") Quux zone
+        a.navbar-brand(href="/") Entrance
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav
           li: a(href="/convert") The Priest
           li: a(href="/validate") The Judge
           li: a(href="/encrypt-and-decrypt") Bob & Alice
-          li: a(href="/beautify") Ms. Lane
+          li: a(href="/beautify") Ms. Lovelace
           li: a(href="/lookup-character") Mr. Hao
           //each categories
           //  li.dropdown
