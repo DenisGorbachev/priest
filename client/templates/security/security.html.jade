@@ -1,0 +1,15 @@
+template(name="security")
+  .container.validate
+    .row
+      .col-lg-8.col-lg-offset-2
+        h1 <strong>Bob & Alice</strong>, free online <strong>encryptors and decryptors</strong>
+        p.
+          You come to an old house with flower pots at the entrance. The light wooden door is closed. After looking around, you notice a small postcard-sized note behind a window frame. It says: <em>“Me and Bob went to see our distant relative, aunt Mallory. If you'd like us to help with generating hashes, encrypting or decrypting messages, please write down your email on a note and put it under doormat. Sincerely yours, Alice & Bob”</em>
+        .well
+          form.form-inline.subscribe(role="form")
+            .form-group
+              input.email.form-control(name="email", type="email", placeholder="Your email")
+              input.hidden(name="interest", value="validate")
+              | &nbsp;&nbsp;
+              button.btn.btn-success.pull-right(type="submit") Put under doormat
+          p.thank-you “<strong>Thank you, kind visitor!</strong> We shall contact you as soon as we arrive home.”

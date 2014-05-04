@@ -1,0 +1,22 @@
+template(name="beautify")
+  .container.validate
+    .row
+      .col-lg-8.col-lg-offset-2
+        h1 <strong>Ms. Lovelace</strong>, free online <strong>beautifier</strong>
+        p.
+          As you approach the Victorian style entrance, a small plate hanging near the doorbell catches your eye. Written in finest handwriting are the following words:
+    .row.plate
+      .col-lg-6.col-lg-offset-3
+        p Dear visitor,
+        p I'd like to greet you in person, but unfortunately I'm not at home. If you came here to beautify JavaScript, HTML or — my own favorite — CSS, please say your email into the small white box and press the green button. I shall promptly contact you as soon as I'm back in town.
+        p Always yours, A.L.
+    .row
+      .col-lg-8.col-lg-offset-2
+        .well
+          form.form-inline.subscribe(role="form")
+            .form-group
+              input.email.form-control(name="email", type="email", placeholder="Say your email here")
+              input.hidden(name="interest", value="validate")
+              | &nbsp;&nbsp;
+              button.btn.btn-success.pull-right(type="submit") Finish speaking
+          p.thank-you “<strong>Thank you, kind visitor!</strong> We shall contact you as soon as we arrive home.”

@@ -1,0 +1,15 @@
+template(name="validate")
+  .container.validate
+    .row
+      .col-lg-8.col-lg-offset-2
+        h1 <strong>Judge</strong>, free online <strong>code validator</strong>
+        p.
+          The path leads you around perfectly trimmed bushes to a well-built stone house entrance. On a heavy wooden door you see a tablet with large print: <em>“Evidently, I'm not at home now. If you wish to validate JSON, XML or any other data structure, please submit your email though the form below. I shall notify you as soon as I'm ready to take visitors.”</em>
+        .well
+          form.form-inline.subscribe(role="form")
+            .form-group
+              input.email.form-control(name="email", type="email", placeholder="Your email")
+              input.hidden(name="interest", value="validate")
+              | &nbsp;&nbsp;
+              button.btn.btn-success.pull-right(type="submit") Notify me
+          p.thank-you “<strong>Thanks for your interest.</strong> I shall get in touch with you soon.”

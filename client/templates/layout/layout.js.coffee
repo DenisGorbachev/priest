@@ -9,4 +9,19 @@ Template.layout.helpers
 Template.layout.rendered = ->
 
 Template.layout.events
-#  "click .selector": (event, template) ->
+  "submit .subscribe": grab encapsulate (event, template) ->
+    $form = $(event.currentTarget)
+    data = {}
+    for field in $form.serializeArray()
+      data[field.name] = field.value
+    check(data,
+      email: String
+      interest: String
+    )
+    mixpanel.identify(data.email)
+    mixpanel.people.set(
+      name: data.email
+    )
+    mixpanel.people.append("interests", data.interest)
+    $form.hide()
+    $form.parent().find(".thank-you").show()

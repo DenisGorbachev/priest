@@ -19,6 +19,12 @@ Router.map ->
       }
     action: ->
       @render(@data().tool.template)
+  @route "validate",
+    path: "/validate"
+  @route "security",
+    path: "/encrypt-and-decrypt"
+  @route "beautify",
+    path: "/beautify"
 
 share.setPageTitle = (title, appendSiteName = true) ->
   if appendSiteName
