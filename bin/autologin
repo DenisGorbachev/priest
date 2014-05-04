@@ -1,12 +1,12 @@
 #!/bin/bash
 
 DIRNAME=$(cd `dirname $0` && pwd)
-METEOR_DOMAIN="priest.me"
+METEOR_DOMAIN="quux.me"
 USERNAME=$(<~/.meteor/${METEOR_DOMAIN}.username)
 PASSWORD=$(<~/.meteor/${METEOR_DOMAIN}.password)
 HOST="54.85.95.182"
 PORT="27017"
-DB="priest_me"
+DB="quux_me"
 OUT_DIR="/tmp"
 
 EMAIL=$1
