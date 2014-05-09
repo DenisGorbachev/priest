@@ -34,7 +34,22 @@ template(name="index")
                   button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
                   p #{.}
             textarea(placeholder="Convert code")
-            p * Orthodox encoding of "UTF-8" assumed
+            p
+              span * Orthodox encoding of "UTF-8" assumed
+              label
+                input(type="radio", name="space_filter", value="1", checked)
+                | &nbsp;
+                input.textField(name="textField", type="text", value="2", size="1", maxlength="1")
+                | &nbsp;
+                | Spaces
+
+            p
+              label
+                input(type="radio", name="space_filter", value="0")
+                | &nbsp;
+                input.textField(name="textField", type="text", value="1", size="1", maxlength="1")
+                | &nbsp;
+                | Tabs
           .output
             textarea
           .alert.alert-success
