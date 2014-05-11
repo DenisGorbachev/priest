@@ -40,7 +40,7 @@ template(name="index")
               label
                 input.spaceRadioButton(type="radio", name="space_filter", value="1", checked)
                 | &nbsp;
-                input.spaceTextField(name="textField", type="text", value="2", size="1", maxlength="1")
+                input.inputTextField.spaceTextField(name="textField", type="text", value="2", size="1", maxlength="1")
                 | &nbsp;
                 | Spaces
 
@@ -48,7 +48,7 @@ template(name="index")
               label
                 input.tabRadioButton(type="radio", name="space_filter", value="0")
                 | &nbsp;
-                input.tabTextField(name="textField", type="text", value="1", size="1", maxlength="1")
+                input.inputTextField.tabTextField(name="textField", type="text", value="1", size="1", maxlength="1")
                 | &nbsp;
                 | Tabs
           .output
