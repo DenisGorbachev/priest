@@ -88,6 +88,35 @@ Template.index.events
     if output
       share.converter.showOutput(template)
       share.converter.selectOutput(template)
+  "change input.tabRadioButton": encapsulate (event, template) ->
+    output = converter.convert(template)
+    if output
+      share.converter.showOutput(template)
+  "change input.spaceRadioButton": encapsulate (event, template) ->
+    output = converter.convert(template)
+    if output
+      share.converter.showOutput(template)
+  "change input.spaceTextField": encapsulate (event, template) ->
+    output = converter.convert(template)
+    if output
+      share.converter.showOutput(template)
+  "change input.tabTextField": encapsulate (event, template) ->
+    output = converter.convert(template)
+    if output
+      share.converter.showOutput(template)
+  "click input.tabTextField": encapsulate (event, template)->
+    $(template.find("input.spaceRadioButton")).prop("checked", false)
+    $(template.find("input.tabRadioButton")).prop("checked", true)
+    output = converter.convert(template)
+    if output
+      share.converter.showOutput(template)
+  "click input.spaceTextField": encapsulate (event, template)->
+    $(template.find("input.spaceRadioButton")).prop("checked", true)
+    $(template.find("input.tabRadioButton")).prop("checked", false)
+    output = converter.convert(template)
+    if output
+      share.converter.showOutput(template)
+
 
 ab2str = (buf) ->
   String.fromCharCode.apply null, new Uint8Array(buf)
@@ -122,6 +151,28 @@ converter = _.defaults(
         if not output
           continue
         break
+    spaces = $(template.find("input.spaceRadioButton")).prop("checked")
+    count = 0
+    if spaces
+      $count = $(template.find("input.spaceTextField"))
+      whatToChange = " "
+      count = $count.val()
+    else
+      $count = $(template.find("input.tabTextField"))
+      whatToChange = "\t"
+      count = $count.val()
+
+    outputLines = output.split("\n");
+    output = ""
+    for line in outputLines
+      beggining = line.match(/^\s+/)
+      if beggining
+        begginingMatch = beggining[0].match(/\s\s/g)
+        if begginingMatch
+          output += _.str.repeat(whatToChange, begginingMatch.length * count)
+      output += line.trim()
+      output += "\n"
+
     $output.val(output)
     output
 )

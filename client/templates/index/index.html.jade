@@ -34,20 +34,21 @@ template(name="index")
                   button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
                   p #{.}
             textarea(placeholder="Convert code")
+              | <h1>this is text</h1>
             p
               span * Orthodox encoding of "UTF-8" assumed
               label
-                input(type="radio", name="space_filter", value="1", checked)
+                input.spaceRadioButton(type="radio", name="space_filter", value="1", checked)
                 | &nbsp;
-                input.textField(name="textField", type="text", value="2", size="1", maxlength="1")
+                input.spaceTextField(name="textField", type="text", value="2", size="1", maxlength="1")
                 | &nbsp;
                 | Spaces
 
             p
               label
-                input(type="radio", name="space_filter", value="0")
+                input.tabRadioButton(type="radio", name="space_filter", value="0")
                 | &nbsp;
-                input.textField(name="textField", type="text", value="1", size="1", maxlength="1")
+                input.tabTextField(name="textField", type="text", value="1", size="1", maxlength="1")
                 | &nbsp;
                 | Tabs
           .output
