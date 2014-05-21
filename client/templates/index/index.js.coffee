@@ -96,23 +96,29 @@ Template.index.events
     output = converter.convert(template)
     if output
       share.converter.showOutput(template)
-  "change input.spaceTextField": encapsulate (event, template) ->
+
+  "focus input.spaceTextField": encapsulate (event, template) ->
+    $(template.find("input.spaceRadioButton")).prop("checked", true)
+    $(template.find("input.tabRadioButton")).prop("checked", false)
     output = converter.convert(template)
     if output
       share.converter.showOutput(template)
-  "change input.tabTextField": encapsulate (event, template) ->
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
-  "click input.tabTextField": encapsulate (event, template)->
+  "focus input.tabTextField": encapsulate (event, template) ->
     $(template.find("input.spaceRadioButton")).prop("checked", false)
     $(template.find("input.tabRadioButton")).prop("checked", true)
     output = converter.convert(template)
     if output
       share.converter.showOutput(template)
-  "click input.spaceTextField": encapsulate (event, template)->
+
+  "change input.spaceTextField": encapsulate (event, template) ->
     $(template.find("input.spaceRadioButton")).prop("checked", true)
     $(template.find("input.tabRadioButton")).prop("checked", false)
+    output = converter.convert(template)
+    if output
+      share.converter.showOutput(template)
+  "change input.tabTextField": encapsulate (event, template) ->
+    $(template.find("input.spaceRadioButton")).prop("checked", false)
+    $(template.find("input.tabRadioButton")).prop("checked", true)
     output = converter.convert(template)
     if output
       share.converter.showOutput(template)
