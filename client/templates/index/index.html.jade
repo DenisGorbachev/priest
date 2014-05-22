@@ -22,11 +22,9 @@ template(name="index")
             if isWebkit
               p
                 | Batch convert project directory:
-                | &nbsp;
                 input.files(type="file" name="dir" directory webkitdirectory mozdirectory)
             p
               | Convert one or many files:
-              | &nbsp;
               input.files(type="file" name="files[]" multiple)
             .errors
               each errors
@@ -34,28 +32,22 @@ template(name="index")
                   button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
                   p #{.}
             textarea(placeholder="Convert code")
-              | <h1>this is text</h1>
             p
               span * Orthodox encoding of "UTF-8" assumed
               label
-                input.spaceRadioButton(type="radio", name="space_filter", value="1", checked)
-                | &nbsp;
+                input.spaceRadioButton(type="radio", name="space_filter", checked=spaceIndentation)
                 input.inputTextField.spaceTextField(name="textField", type="text", value="2", size="1", maxlength="1")
-                | &nbsp;
                 | Spaces
 
             p
               label
-                input.tabRadioButton(type="radio", name="space_filter", value="0")
-                | &nbsp;
+                input.tabRadioButton(type="radio", name="space_filter", checked=tabIndentation)
                 input.inputTextField.tabTextField(name="textField", type="text", value="1", size="1", maxlength="1")
-                | &nbsp;
                 | Tabs
           .output
-            textarea
+            textarea(hidden=hide) #{result}
           .alert.alert-success
             strong Your data is safe, my friend.
-            | &nbsp;
             | Whatever you convert stays inside your browser.
         h2 Spread the good news
         +social
@@ -72,3 +64,4 @@ template(name="index")
         p.
           Priest is an imaginary friend of unworthy <a href="https://twitter.com/DenGorbachev">Denis Gorbachev</a>. Blessed for ages are <a href="https://twitter.com/rstacruz">Rico Sta Cruz</a>, <a href="https://twitter.com/tdecs">Denis Ciccale</a> and <a href="https://twitter.com/donpark">Don Park</a> who provided foundational code.
         //iframe(src="http://ghbtns.com/github-btn.html?user=DenisGorbachev&repo=priest&type=fork&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="40")
+

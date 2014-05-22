@@ -2,7 +2,7 @@
   "packages": {
     "iron-router": {},
     "bootstrap-3": {},
-    "jade": {},
-    "collection-hooks": {}
+    "collection-hooks": {},
+    "jade": {}
   }
 }

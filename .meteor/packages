@@ -7,9 +7,9 @@ standard-app-packages
 iron-router
 coffeescript
 stylus
-jade
 jquery
 underscore
 npm-packages
 collection-hooks
 spiderable
+jade

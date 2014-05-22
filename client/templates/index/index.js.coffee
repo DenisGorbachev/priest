@@ -3,6 +3,14 @@ Template.index.helpers
     jQuery.browser.webkit
   errors: ->
     Session.get("index-errors")
+  spaceIndentation: ->
+    Session.equals(indentationCharacter, space)
+  tabIndentation: ->
+    Session.equals(indentationCharacter, tab)
+  result: ->
+    newConverter.convert()
+  hide: ->
+    Session.equals("hide", "")
 
 Template.index.rendered = ->
   template = @
@@ -11,7 +19,7 @@ Template.index.rendered = ->
   #      share.converter.loadSample(template)
   #      converter.convert(template)
   #      share.converter.showOutput(template)
-  share.converter.selectInput(template)
+  newConverter.setInput(template)
 
 Template.index.events
   "change .files": encapsulate (event, template) ->
@@ -67,62 +75,40 @@ Template.index.events
     event.stopPropagation()
     for f in event.originalEvent.dataTransfer.files
       cl f
-  "keyup .input textarea": encapsulate (event, template) ->
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
+
   "paste .input textarea": encapsulate (event, template) ->
     _.defer ->
-      output = converter.convert(template)
-      if output
-        share.converter.showOutput(template)
-        share.converter.selectOutput(template)
-  "change .options input[type='checkbox']": encapsulate (event, template) ->
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
-      share.converter.selectOutput(template)
-  "click .load-sample": encapsulate (event, template) ->
-    share.converter.loadSample(template)
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
-      share.converter.selectOutput(template)
-  "change input.tabRadioButton": encapsulate (event, template) ->
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
-  "change input.spaceRadioButton": encapsulate (event, template) ->
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
+      newConverter.setInput(template)
+      newConverter.selectOutput(template)
+  "keyup .input textarea": encapsulate (event, template) ->
+    newConverter.setInput(template)
+  "change .tabRadioButton": encapsulate (event, template) ->
+    Session.set(indentationCharacter, tab);
+    Session.set(indentationCount, countIndentationChars(template));
+    newConverter.selectOutput(template)
+  "change .spaceRadioButton": encapsulate (event, template) ->
+    Session.set(indentationCharacter, space);
+    Session.set(indentationCount, countIndentationChars(template));
+    newConverter.selectOutput(template)
+  "focus .spaceTextField": encapsulate (event, template) ->
+    Session.set(indentationCharacter, space);
+    Session.set(indentationCount, countIndentationChars(template));
+  "focus .tabTextField": encapsulate (event, template) ->
+    Session.set(indentationCharacter, tab);
+    Session.set(indentationCount, countIndentationChars(template));
+  "keyup .spaceTextField": encapsulate (event, template) ->
+    Session.set(indentationCharacter, space);
+    Session.set(indentationCount, countIndentationChars(template));
+  "keyup .tabTextField": encapsulate (event, template) ->
+    Session.set(indentationCharacter, tab);
+    Session.set(indentationCount, countIndentationChars(template));
+  "change .spaceTextField": encapsulate (event, template) ->
+    newConverter.selectOutput(template)
+  "change .tabTextField": encapsulate (event, template) ->
+    newConverter.selectOutput(template)
 
-  "focus input.spaceTextField": encapsulate (event, template) ->
-    $(template.find("input.spaceRadioButton")).prop("checked", true)
-    $(template.find("input.tabRadioButton")).prop("checked", false)
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
-  "focus input.tabTextField": encapsulate (event, template) ->
-    $(template.find("input.spaceRadioButton")).prop("checked", false)
-    $(template.find("input.tabRadioButton")).prop("checked", true)
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
-
-  "change input.spaceTextField": encapsulate (event, template) ->
-    $(template.find("input.spaceRadioButton")).prop("checked", true)
-    $(template.find("input.tabRadioButton")).prop("checked", false)
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
-  "change input.tabTextField": encapsulate (event, template) ->
-    $(template.find("input.spaceRadioButton")).prop("checked", false)
-    $(template.find("input.tabRadioButton")).prop("checked", true)
-    output = converter.convert(template)
-    if output
-      share.converter.showOutput(template)
-
+countIndentationChars = (template) ->
+  $(template.find("input." + Session.get(indentationCharacter) + "TextField")).val()
 
 ab2str = (buf) ->
   String.fromCharCode.apply null, new Uint8Array(buf)
@@ -140,33 +126,26 @@ str2ab = (str) ->
 
 Session.setDefault("index-errors", [])
 
-converter = _.defaults(
-  convert: (template) ->
-    $input = $(template.find(".input textarea"))
-    $output = $(template.find(".output textarea"))
-    $options = $(template.find(".options"))
-    input = $input.val().trim()
+newConverter = _.defaults(
+  convert: () ->
     output = ""
-    options = if $options.length then $options.serializeArray() else []
+    input = Session.get("input")
     if input
       for toolConverter in [new share.JavaScriptToCoffeeScriptConverter(), new share.CSSToStylusConverter(), new share.HTMLToJadeConverter()]
         try
-          output = toolConverter.convert(input, options)
+          output = toolConverter.convert(input)
         catch e
           continue
         if not output
           continue
         break
-    spaces = $(template.find("input.spaceRadioButton")).prop("checked")
-    count = 0
-    if spaces
-      $count = $(template.find("input.spaceTextField"))
+
+    count = Session.get(indentationCount)
+
+    if Session.equals(indentationCharacter, space)
       whatToChange = " "
-      count = $count.val()
     else
-      $count = $(template.find("input.tabTextField"))
       whatToChange = "\t"
-      count = $count.val()
 
     outputLines = output.split("\n");
     output = ""
@@ -179,6 +158,28 @@ converter = _.defaults(
       output += line.trim()
       output += "\n"
 
-    $output.val(output)
-    output
+    Session.set("hide", output.trim())
+
+    output.trim()
+
+  setInput: (template) ->
+    Session.set("input",$(template.find(".input textarea")).val().trim())
+
+  selectOutput: (template) ->
+    _.defer ->
+      $(template.find(".output textarea")).select()
+
 )
+
+
+#old
+loadSample: (template) ->
+  $(template.find(".input textarea")).val(template.data.tool.converter().getSample())
+
+
+
+
+indentationCharacter = "indentationCharacter"
+indentationCount = "indentationCount"
+space = "space"
+tab = "tab"
