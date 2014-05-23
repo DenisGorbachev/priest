@@ -34,14 +34,14 @@ template(name="index")
             textarea(placeholder="Convert code")
             span * Orthodox encoding of "UTF-8" assumed
             p
-              label.indentation-wrapper(data-indentation-character="space")
-                input.indentation-radio-button(type="radio", name="space_filter", checked=spaceIndentation)
-                input.indentation-count(name="textField", type="text", value="2", size="1", maxlength="1")
+              label.indentation-wrapper
+                input.indentation-character(type="radio", name="indentation-character", value="space", checked=spaceIndentation)
+                input.indentation-count(type="text", name="space-indentation-count", value="2", size="1", maxlength="1")
                 | Spaces
             p
-              label.indentation-wrapper(data-indentation-character="tab")
-                input.indentation-radio-button(type="radio", name="tab_filter", checked=tabIndentation)
-                input.indentation-count(name="textField", type="text", value="1", size="1", maxlength="1")
+              label.indentation-wrapper
+                input.indentation-character(type="radio", name="indentation-character", value="tab", checked=tabIndentation)
+                input.indentation-count(type="text", name="tab-indentation-count", value="1", size="1", maxlength="1")
                 | Tabs
           .output
             textarea(hidden=hide) #{result}

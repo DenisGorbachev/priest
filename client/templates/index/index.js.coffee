@@ -81,7 +81,7 @@ Template.index.events
       newConverter.selectOutput(template)
   "keyup .input textarea": encapsulate (event, template) ->
     newConverter.setInput(template)
-  "change .indentation-radio-button": encapsulate (event, template) ->
+  "change .indentation-character": encapsulate (event, template) ->
     setSessionVariables($(event.currentTarget).closest(".indentation-wrapper"))
     newConverter.selectOutput(template)
   "focus .indentation-count": encapsulate (event) ->
@@ -92,10 +92,8 @@ Template.index.events
     newConverter.selectOutput(template)
 
 setSessionVariables = ($indentationWrapper) ->
-  char = $indentationWrapper.attr("data-indentation-character")
-  count = $indentationWrapper.find(".indentation-count").val()
-  Session.set(indentationCharacter, char);
-  Session.set(indentationCount, count);
+  Session.set(indentationCharacter, $indentationWrapper.find(".indentation-character").val())
+  Session.set(indentationCount, $indentationWrapper.find(".indentation-count").val())
 
 ab2str = (buf) ->
   String.fromCharCode.apply null, new Uint8Array(buf)
