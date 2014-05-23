@@ -75,40 +75,27 @@ Template.index.events
     event.stopPropagation()
     for f in event.originalEvent.dataTransfer.files
       cl f
-
   "paste .input textarea": encapsulate (event, template) ->
     _.defer ->
       newConverter.setInput(template)
       newConverter.selectOutput(template)
   "keyup .input textarea": encapsulate (event, template) ->
     newConverter.setInput(template)
-  "change .tabRadioButton": encapsulate (event, template) ->
-    Session.set(indentationCharacter, tab);
-    Session.set(indentationCount, countIndentationChars(template));
+  "change .indentation-radio-button": encapsulate (event, template) ->
+    setSessionVariables($(event.currentTarget).closest(".indentation-wrapper"))
     newConverter.selectOutput(template)
-  "change .spaceRadioButton": encapsulate (event, template) ->
-    Session.set(indentationCharacter, space);
-    Session.set(indentationCount, countIndentationChars(template));
-    newConverter.selectOutput(template)
-  "focus .spaceTextField": encapsulate (event, template) ->
-    Session.set(indentationCharacter, space);
-    Session.set(indentationCount, countIndentationChars(template));
-  "focus .tabTextField": encapsulate (event, template) ->
-    Session.set(indentationCharacter, tab);
-    Session.set(indentationCount, countIndentationChars(template));
-  "keyup .spaceTextField": encapsulate (event, template) ->
-    Session.set(indentationCharacter, space);
-    Session.set(indentationCount, countIndentationChars(template));
-  "keyup .tabTextField": encapsulate (event, template) ->
-    Session.set(indentationCharacter, tab);
-    Session.set(indentationCount, countIndentationChars(template));
-  "change .spaceTextField": encapsulate (event, template) ->
-    newConverter.selectOutput(template)
-  "change .tabTextField": encapsulate (event, template) ->
+  "focus .indentation-count": encapsulate (event) ->
+    setSessionVariables($(event.currentTarget).closest(".indentation-wrapper"))
+  "keyup .indentation-count": encapsulate (event) ->
+    Session.set(indentationCount, $(event.currentTarget).val())
+  "change .indentation-count": encapsulate (event, template) ->
     newConverter.selectOutput(template)
 
-countIndentationChars = (template) ->
-  $(template.find("input." + Session.get(indentationCharacter) + "TextField")).val()
+setSessionVariables = ($indentationWrapper) ->
+  char = $indentationWrapper.attr("data-indentation-character")
+  count = $indentationWrapper.find(".indentation-count").val()
+  Session.set(indentationCharacter, char);
+  Session.set(indentationCount, count);
 
 ab2str = (buf) ->
   String.fromCharCode.apply null, new Uint8Array(buf)
