@@ -31,7 +31,7 @@ template(name="index")
                 .alert.alert-danger.fade.in
                   button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
                   p #{.}
-            textarea(placeholder="Convert code")
+            textarea(placeholder="Convert code", autofocus)
             span * Orthodox encoding of "UTF-8" assumed
             p.indentation-wrapper
               input.indentation-character(type="radio", name="indentation-character", value="space", checked=spaceIndentation, id='space-radio')
