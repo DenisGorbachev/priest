@@ -5,7 +5,8 @@
       "iron-router": {},
       "bootstrap-3": {},
       "collection-hooks": {},
-      "jade": {}
+      "jade": {},
+      "reactive-store": {}
     },
     "packages": {
       "iron-router": {
@@ -27,6 +28,11 @@
         "git": "https://github.com/mquandalle/meteor-jade.git",
         "tag": "v0.2.3",
         "commit": "38220544108cdc30e2e53f40481dce0b594d6f31"
+      },
+      "reactive-store": {
+        "git": "https://github.com/andrewreedy/reactive-store.git",
+        "tag": "v0.0.1",
+        "commit": "18a945ff0d1a449938f35afd2bbbf09d1ecd322a"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

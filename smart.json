@@ -3,6 +3,7 @@
     "iron-router": {},
     "bootstrap-3": {},
     "collection-hooks": {},
-    "jade": {}
+    "jade": {},
+    "reactive-store": {}
   }
 }

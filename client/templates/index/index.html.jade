@@ -35,12 +35,12 @@ template(name="index")
             span * Orthodox encoding of "UTF-8" assumed
             p.indentation-wrapper
               input.indentation-character(type="radio", name="indentation-character", value="space", checked=spaceIndentation, id='space-radio')
-              input.indentation-count(type="text", name="space-indentation-count", value="2", size="1", maxlength="1")
+              input.indentation-count(type="text", name="space-indentation-count", value=spaceIndentationCount, size="1", maxlength="1")
               label(for='space-radio')
                 | Spaces
             p.indentation-wrapper
               input.indentation-character(type="radio", name="indentation-character", value="tab", checked=tabIndentation, id='tab-radio')
-              input.indentation-count(type="text", name="tab-indentation-count", value="1", size="1", maxlength="1")
+              input.indentation-count(type="text", name="tab-indentation-count", value=tabIndentationCount, size="1", maxlength="1")
               label(for='tab-radio')
                 | Tabs
           .output

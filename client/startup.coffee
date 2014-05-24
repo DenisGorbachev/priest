@@ -4,6 +4,9 @@ window.fbAsyncInit = ->
     xfbml: true
   )
 
-
-Session.setDefault("indentationCharacter", "space")
-Session.setDefault("indentationCount", 2)
+if not ReactiveStore.get("indentationCharacter")
+  ReactiveStore.set("indentationCharacter","space")
+if not ReactiveStore.get("spaceIndentationCount")
+  ReactiveStore.set("spaceIndentationCount","2")
+if not ReactiveStore.get("tabIndentationCount")
+  ReactiveStore.set("tabIndentationCount", "1")

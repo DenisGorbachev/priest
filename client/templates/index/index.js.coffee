@@ -4,9 +4,13 @@ Template.index.helpers
   errors: ->
     Session.get("index-errors")
   spaceIndentation: ->
-    Session.equals(indentationCharacter, space)
+    ReactiveStore.get(indentationCharacter) is space
   tabIndentation: ->
-    Session.equals(indentationCharacter, tab)
+    ReactiveStore.get(indentationCharacter) is tab
+  spaceIndentationCount: ->
+    ReactiveStore.get(spaceIndentationCount)
+  tabIndentationCount: ->
+    ReactiveStore.get(tabIndentationCount)
   result: ->
     newConverter.convert()
   hide: ->
@@ -87,16 +91,16 @@ Template.index.events
   "focus .indentation-count": encapsulate (event) ->
     setSessionVariables($(event.currentTarget).closest(".indentation-wrapper"))
   "keyup .indentation-count": encapsulate (event, template) ->
-    Session.set(indentationCount, $(event.currentTarget).val())
+    ReactiveStore.set(ReactiveStore.get(indentationCharacter) + "IndentationCount",  $(event.currentTarget).val())
   "input .indentation-count": encapsulate (event, template) ->
     value = $(event.currentTarget).val()
     if value
-      Session.set(indentationCount, value)
+      ReactiveStore.set(ReactiveStore.get(indentationCharacter) + "IndentationCount",value)
       newConverter.selectOutput(template)
 
 setSessionVariables = ($indentationWrapper) ->
-  Session.set(indentationCharacter, $indentationWrapper.find(".indentation-character").val())
-  Session.set(indentationCount, $indentationWrapper.find(".indentation-count").val())
+  ReactiveStore.set(indentationCharacter, $indentationWrapper.find(".indentation-character").val())
+  ReactiveStore.set(ReactiveStore.get(indentationCharacter) + "IndentationCount", $indentationWrapper.find(".indentation-count").val())
 
 ab2str = (buf) ->
   String.fromCharCode.apply null, new Uint8Array(buf)
@@ -128,9 +132,9 @@ newConverter = _.defaults(
           continue
         break
 
-    count = Session.get(indentationCount)
+    count = ReactiveStore.get(ReactiveStore.get(indentationCharacter) + "IndentationCount")
 
-    if Session.equals(indentationCharacter, space)
+    if ReactiveStore.get(indentationCharacter) is space
       whatToChange = " "
     else
       whatToChange = "\t"
@@ -168,6 +172,7 @@ loadSample: (template) ->
 
 
 indentationCharacter = "indentationCharacter"
-indentationCount = "indentationCount"
+spaceIndentationCount = "spaceIndentationCount"
+tabIndentationCount = "tabIndentationCount"
 space = "space"
 tab = "tab"
