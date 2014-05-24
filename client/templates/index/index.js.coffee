@@ -86,10 +86,13 @@ Template.index.events
     newConverter.selectOutput(template)
   "focus .indentation-count": encapsulate (event) ->
     setSessionVariables($(event.currentTarget).closest(".indentation-wrapper"))
-  "keyup .indentation-count": encapsulate (event) ->
+  "keyup .indentation-count": encapsulate (event, template) ->
     Session.set(indentationCount, $(event.currentTarget).val())
-  "change .indentation-count": encapsulate (event, template) ->
-    newConverter.selectOutput(template)
+  "input .indentation-count": encapsulate (event, template) ->
+    value = $(event.currentTarget).val()
+    if value
+      Session.set(indentationCount, value)
+      newConverter.selectOutput(template)
 
 setSessionVariables = ($indentationWrapper) ->
   Session.set(indentationCharacter, $indentationWrapper.find(".indentation-character").val())

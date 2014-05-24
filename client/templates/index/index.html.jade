@@ -33,15 +33,15 @@ template(name="index")
                   p #{.}
             textarea(placeholder="Convert code")
             span * Orthodox encoding of "UTF-8" assumed
-            p
-              label.indentation-wrapper
-                input.indentation-character(type="radio", name="indentation-character", value="space", checked=spaceIndentation)
-                input.indentation-count(type="text", name="space-indentation-count", value="2", size="1", maxlength="1")
+            p.indentation-wrapper
+              input.indentation-character(type="radio", name="indentation-character", value="space", checked=spaceIndentation, id='space-radio')
+              input.indentation-count(type="text", name="space-indentation-count", value="2", size="1", maxlength="1")
+              label(for='space-radio')
                 | Spaces
-            p
-              label.indentation-wrapper
-                input.indentation-character(type="radio", name="indentation-character", value="tab", checked=tabIndentation)
-                input.indentation-count(type="text", name="tab-indentation-count", value="1", size="1", maxlength="1")
+            p.indentation-wrapper
+              input.indentation-character(type="radio", name="indentation-character", value="tab", checked=tabIndentation, id='tab-radio')
+              input.indentation-count(type="text", name="tab-indentation-count", value="1", size="1", maxlength="1")
+              label(for='tab-radio')
                 | Tabs
           .output
             textarea(hidden=hide) #{result}
