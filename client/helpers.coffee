@@ -31,3 +31,4 @@ UI.registerHelper("condition", (v1, operator, v2, options) ->
     else
       throw "Undefined operator \"" + operator + "\""
 )
+

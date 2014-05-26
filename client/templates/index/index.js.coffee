@@ -64,6 +64,7 @@ Template.index.events
             when !!path.match(/\.html$/i)
               result = HTMLToJadeConverter.convert(ab2str(result))
               path = path.replace(/\.html$/i, ".jade")
+              #todo!
             else
           # noop
         catch e
@@ -123,10 +124,21 @@ newConverter = _.defaults(
     output = ""
     input = Session.get("input")
     if input
-      for toolConverter in [new share.JavaScriptToCoffeeScriptConverter(), new share.CSSToStylusConverter(), new share.HTMLToJadeConverter()]
+      i = 0
+      for toolConverter in [
+                            new share.JavaScriptToCoffeeScriptConverter(),
+                            new share.HTMLToJadeConverter(), #todo there are problems with parsing js in html
+                            new share.StylusToCSSConverter(),
+                            new share.JadeToHtmlConverter(),
+                            new share.CSSToStylusConverter(),
+                            new share.CoffeeScriptToJavaScriptConverter()
+                            ]
         try
+          cl "output in try:" + input
           output = toolConverter.convert(input)
+
         catch e
+          cl "In try-catch" + e
           continue
         if not output
           continue
@@ -151,7 +163,6 @@ newConverter = _.defaults(
       output += "\n"
 
     Session.set("hide", output.trim())
-
     output.trim()
 
   setInput: (template) ->
