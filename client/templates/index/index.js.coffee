@@ -175,8 +175,8 @@ newConverter = _.defaults(
 
   setInput: (template) ->
     input = $(template.find(".input textarea")).val().trim()
-    Session.set("input",input)
-    if(input != "")
+    Session.set("input", input)
+    if input
       Session.set("placeholder", "placeholder-textarea-solid")
     else
       Session.set("placeholder", "")
