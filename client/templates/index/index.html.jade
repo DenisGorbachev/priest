@@ -31,15 +31,20 @@ template(name="index")
             div.back-placeholder
               div.placeholder-div
                 div.placeholder-text
-                  | Convert:
+                  | Paste code here
                   br
-                  | JavaScript &lt;-&gt; CoffeeScript
                   br
-                  | HTML &lt;-&gt; Jade
+                  | JavaScript &rarr; CoffeeScript
                   br
-                  | CSS -&gt; Stylus
-              textarea.placeholder-textarea-transparent(autofocus="autofocus", class = placeholder)
-            span * Orthodox encoding of "UTF-8" assumed
+                  | CoffeeScript &rarr; JavaScript
+                  br
+                  | HTML &rarr; Jade
+                  br
+                  | Jade &rarr; HTML
+                  br
+                  | CSS &rarr; Stylus
+              textarea(autofocus="autofocus", class=placeholder)
+            span * Encoding of "UTF-8" assumed
             p.indentation-wrapper
               input.indentation-character(type="radio", name="indentation-character", value="space", checked=spaceIndentation, id='space-radio')
               input.indentation-count(type="text", name="space-indentation-count", value=spaceIndentationCount, size="1", maxlength="1")

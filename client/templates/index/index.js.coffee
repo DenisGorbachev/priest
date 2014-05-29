@@ -66,7 +66,6 @@ Template.index.events
             when !!path.match(/\.html$/i)
               result = HTMLToJadeConverter.convert(ab2str(result))
               path = path.replace(/\.html$/i, ".jade")
-              #todo!
             else
           # noop
         catch e
@@ -134,18 +133,15 @@ newConverter = _.defaults(
     output = ""
     input = Session.get("input")
     if input
-      i = 0
       for toolConverter in [
                             new share.JavaScriptToCoffeeScriptConverter(),
                             new share.HTMLToJadeConverter(),
-#                            new share.StylusToCSSConverter(),
                             new share.JadeToHtmlConverter(),
                             new share.CSSToStylusConverter(),
                             new share.CoffeeScriptToJavaScriptConverter()
                             ]
         try
           output = toolConverter.convert(input)
-
         catch e
           continue
         if not output
@@ -174,8 +170,12 @@ newConverter = _.defaults(
     output.trim()
 
   setInput: (template) ->
-    input = $(template.find(".input textarea")).val().trim()
-    Session.set("input", input)
+    input = $(template.find(".input textarea")).val()
+    inputValue = input.trim()
+    Session.set("input", inputValue)
+
+    cl "input = [" + input + "]"
+    cl input != ""
     if input
       Session.set("placeholder", "placeholder-textarea-solid")
     else
