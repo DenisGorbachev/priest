@@ -187,14 +187,6 @@ newConverter = _.defaults(
 
 )
 
-
-#old
-loadSample: (template) ->
-  $(template.find(".input textarea")).val(template.data.tool.converter().getSample())
-
-
-
-
 indentationCharacter = "indentationCharacter"
 spaceIndentationCount = "spaceIndentationCount"
 tabIndentationCount = "tabIndentationCount"
