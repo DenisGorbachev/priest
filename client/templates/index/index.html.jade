@@ -10,11 +10,10 @@ template(name="index")
       .col-lg-8.col-lg-offset-2
         h1 <strong>Priest</strong>, free online <strong>converter and formatter</strong>
         .alert.alert-success
-          strong Now you can
           ul
-            li Save and restore indentation settings
-            li Make batch conversions of files to new languages
-            li Convert whole directories and projects to new languages
+            li <strong>Spaces or tabs</strong> (settings <strong>saved in cookies</strong>).
+            li <strong>Batch conversions</strong> for many files.
+            li <strong>Convert whole projects</strong> to CoffeeScript, Stylus, Jade.
         .well.converter
           .input
             if isWebkit
@@ -22,8 +21,8 @@ template(name="index")
                 | Batch convert project directory:
                 input.files(type="file" name="dir" directory webkitdirectory mozdirectory)
             p
-              | Convert one or many files:
-              input.files(type="file" name="files[]" multiple)
+              | Convert a file:
+              input.files(type="file" name="files[]")
             .errors
               each errors
                 .alert.alert-danger.fade.in
@@ -62,7 +61,7 @@ template(name="index")
         ul
           li Autoconvert text in browser (for Github and other sites)
           li Offline app for times of weak connection
-          li Mobile HTML5 app for multiplication
+          li Mobile HTML5 app
           li: a(href="https://github.com/DenisGorbachev/priest/issues/new") Suggest new
         p.
           <a href="https://github.com/DenisGorbachev/priest">Enlighten</a> in Github pull requests.
