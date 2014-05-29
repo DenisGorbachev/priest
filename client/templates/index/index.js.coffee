@@ -15,6 +15,8 @@ Template.index.helpers
     newConverter.convert()
   hide: ->
     Session.equals("hide", "")
+  placeholder: ->
+    Session.get("placeholder")
 
 Template.index.rendered = ->
   template = @
@@ -84,6 +86,14 @@ Template.index.events
     _.defer ->
       newConverter.setInput(template)
       newConverter.selectOutput(template)
+      Session.set("placeholder", "placeholder-textarea-solid")
+  "paste .input textarea": encapsulate (event, template) ->
+    _.defer ->
+      newConverter.setInput(template)
+      newConverter.selectOutput(template)
+      Session.set("placeholder", "placeholder-textarea-solid")
+  "keydown .input textarea": encapsulate (template) ->
+    Session.set("placeholder", "placeholder-textarea-solid")
   "keyup .input textarea": encapsulate (event, template) ->
     newConverter.setInput(template)
   "change .indentation-character": encapsulate (event, template) ->
@@ -127,18 +137,16 @@ newConverter = _.defaults(
       i = 0
       for toolConverter in [
                             new share.JavaScriptToCoffeeScriptConverter(),
-                            new share.HTMLToJadeConverter(), #todo there are problems with parsing js in html
-                            new share.StylusToCSSConverter(),
+                            new share.HTMLToJadeConverter(),
+#                            new share.StylusToCSSConverter(),
                             new share.JadeToHtmlConverter(),
                             new share.CSSToStylusConverter(),
                             new share.CoffeeScriptToJavaScriptConverter()
                             ]
         try
-          cl "output in try:" + input
           output = toolConverter.convert(input)
 
         catch e
-          cl "In try-catch" + e
           continue
         if not output
           continue
@@ -166,7 +174,12 @@ newConverter = _.defaults(
     output.trim()
 
   setInput: (template) ->
-    Session.set("input",$(template.find(".input textarea")).val().trim())
+    input = $(template.find(".input textarea")).val().trim()
+    Session.set("input",input)
+    if(input != "")
+      Session.set("placeholder", "placeholder-textarea-solid")
+    else
+      Session.set("placeholder", "")
 
   selectOutput: (template) ->
     _.defer ->

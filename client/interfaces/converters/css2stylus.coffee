@@ -14,3 +14,5 @@ class share.CSSToStylusConverter extends share.CSSConverter
 #    executor.css = value
     executor.processCss(options)
     executor.getStylus()
+  name: ->
+    return "CSSToStylusConverter"

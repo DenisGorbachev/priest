@@ -60,6 +60,8 @@ class share.JavaScriptToCoffeeScriptConverter
     js2coffee.build(value,
       show_src_lineno: false
     )
+  name: ->
+    return "JavaScriptToCoffeeScriptConverter"
 #    options =
 #      cssSyntax: false
 #      unPrefix: true
